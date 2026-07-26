@@ -1,5 +1,5 @@
 import axios from 'axios';
-const BASE_URL = import.meta.env.VITE_API_URL || 'link_codespaces'
+const BASE_URL = import.meta.env.VITE_API_URL || ''
 export 
 
 // Khởi tạo instance của axios với các cài đặt chung
