@@ -1,0 +1,179 @@
+/* ----- General Home Styles ----- */
+.section-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+  padding-bottom: 8px;
+}
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--color-primary-gradient);
+}
+.fire-icon {
+  font-size: 24px;
+}
+
+/* ===== ÉP FULL MÀN HÌNH TOÀN BỘ KHỐI HOME ===== */
+.home-full-width {
+  max-width: 100% !important;
+  width: 100% !important;
+  padding-left: 40px !important;
+  padding-right: 40px !important;
+  box-sizing: border-box !important;
+  margin: 0 !important;
+}
+
+.home-full-width .container {
+  max-width: 100% !important;
+  width: 100% !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* ----- Featured Spotlight (3 khung to dưới Header) ----- */
+.featured-spotlight {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  padding: 24px 0;
+}
+.featured-card {
+  position: relative;
+  height: 320px;
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+  transition: transform 0.3s ease;
+}
+.featured-card:hover {
+  transform: translateY(-5px);
+}
+.featured-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+.featured-card:hover .featured-img {
+  transform: scale(1.05);
+}
+
+/* ----- Trending Carousel Section ----- */
+.trending-section {
+  padding: 20px 0 40px 0;
+}
+.trending-carousel-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.trending-carousel {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 15px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.trending-carousel::-webkit-scrollbar { display: none; }
+.trending-carousel.dragging { scroll-behavior: auto; cursor: grab; }
+.trending-carousel.dragging:active { cursor: grabbing; }
+
+/* ĐÃ SỬA: Tăng số lượng phim hiển thị trên 1 hàng để thẻ phim nhỏ lại */
+.carousel-item {
+  scroll-snap-align: start;
+  flex: 0 0 calc(12.5% - 17.5px); /* 8 items per view (100/8 = 12.5) */
+  width: calc(12.5% - 17.5px);
+  user-select: none;
+}
+@media (max-width: 1400px) {
+  .carousel-item {
+    flex: 0 0 calc(16.666% - 16.66px); /* 6 items per view */
+    width: calc(16.666% - 16.66px);
+  }
+}
+@media (max-width: 1024px) {
+  .carousel-item {
+    flex: 0 0 calc(20% - 16px); /* 5 items per view */
+    width: calc(20% - 16px);
+  }
+}
+@media (max-width: 768px) {
+  .carousel-item {
+    flex: 0 0 calc(33.333% - 13.33px); /* 3 items per view */
+    width: calc(33.333% - 13.33px);
+  }
+}
+
+.carousel-btn {
+  position: absolute; top: 50%; transform: translateY(-50%); z-index: 10;
+  width: 40px; height: 40px; border-radius: 50%;
+  background: var(--bg-card); color: var(--text-primary);
+  border: 1px solid var(--border-color); font-size: 24px;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: all 0.2s;
+}
+.carousel-btn:hover { background: var(--color-primary); color: #fff; border-color: var(--color-primary); }
+.carousel-btn.left { left: 10px; }
+.carousel-btn.right { right: 10px; }
+@media (max-width: 768px) { .carousel-btn { display: none; } }
+
+/* ----- Custom Row Section (Các dải phim chủ đề) ----- */
+.custom-row-section { margin-bottom: 40px; }
+.custom-row-scroller {
+  display: flex; gap: 16px; overflow-x: auto;
+  padding-bottom: 10px; scrollbar-width: none; -ms-overflow-style: none;
+}
+.custom-row-scroller::-webkit-scrollbar { display: none; }
+.custom-row-scroller > div { flex: 0 0 200px; }
+
+/* ----- Movie Grid Section ----- */
+.movie-grid-wrapper { position: relative; min-height: 400px; transition: opacity 0.3s ease; }
+.movie-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 20px; }
+@media (max-width: 1024px) { .movie-grid { grid-template-columns: repeat(4, 1fr); } }
+@media (max-width: 768px) { .movie-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 480px) { .movie-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; } }
+
+/* ----- Empty State ----- */
+.empty-state {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  padding: 60px 20px; text-align: center; color: var(--text-secondary);
+  background: var(--bg-card); border-radius: var(--radius-md); border: 1px solid var(--border-color);
+}
+.empty-state svg { margin-bottom: 16px; opacity: 0.5; }
+.empty-state h3 { color: var(--text-primary); margin-bottom: 8px; font-size: 18px; }
+
+/* ----- Animations ----- */
+.fade-in { animation: fadeIn 0.4s ease-out forwards; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+/* ----- Skeleton Loading ----- */
+.skeleton-card { display: flex; flex-direction: column; gap: 10px; }
+.skeleton-poster {
+  width: 100%; aspect-ratio: 2/3; border-radius: var(--radius-md);
+  background: linear-gradient(90deg, var(--bg-card) 25%, var(--bg-button) 50%, var(--bg-card) 75%);
+  background-size: 200% 100%; animation: loading 1.5s infinite;
+}
+.skeleton-text {
+  height: 14px; border-radius: 4px;
+  background: linear-gradient(90deg, var(--bg-card) 25%, var(--bg-button) 50%, var(--bg-card) 75%);
+  background-size: 200% 100%; animation: loading 1.5s infinite;
+}
+.skeleton-text.title { width: 80%; height: 18px; }
+.skeleton-text.subtitle { width: 60%; }
+@keyframes loading { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
