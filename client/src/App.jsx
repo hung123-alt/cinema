@@ -18,6 +18,7 @@ import { RandomPage } from './pages/RandomPage';
 import { WatchlistProvider } from './context/WatchlistContext';
 import { CategoriesPage } from './pages/admin/CategoriesPage';
 import { CommentsPage } from './pages/admin/CommentsPage';
+import SpeedWidget from './components/SpeedWidget';
 import './index.css';
 
 // ⭐ LAZY LOAD trang thông báo — nếu trang này có lỗi sẽ KHÔNG làm sập toàn bộ app
@@ -77,6 +78,9 @@ function App() {
               />
             </Route>
           </Routes>
+
+          {/* ✅ SpeedWidget đặt TRONG BrowserRouter để dùng được useLocation() */}
+          <SpeedWidget />
         </BrowserRouter>
       </WatchlistProvider>
     </AuthProvider>
